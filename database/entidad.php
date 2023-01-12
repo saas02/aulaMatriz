@@ -39,12 +39,37 @@ class entidadBase
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
 
-    public function save($query)
+    public function deleteById($ids)
+    {        
+        return mysqli_query($this->db, "DELETE FROM $this->table WHERE id IN (".implode(', ', $ids).")");
+    }
+
+    public function save($querys)
     {
-        mysqli_query($this->db, $query, MYSQLI_USE_RESULT);
-        $_SESSION['lastId'] = mysqli_insert_id($this->db);
-        $_SESSION['error'] = mysqli_error($this->db);
-        return mysqli_insert_id($this->db);
+        unset($_SESSION['errors']);
+        mysqli_begin_transaction($this->db);
+
+        $result = [];
+
+        try {
+
+            
+            foreach ($querys as $query) {
+                mysqli_query($this->db, $query, MYSQLI_USE_RESULT);
+                $result[] = mysqli_insert_id($this->db);
+            }            
+            
+            mysqli_commit($this->db);
+
+            
+        } catch (mysqli_sql_exception $exception) {
+            
+            mysqli_rollback($this->db);
+            $_SESSION['errors'] = $exception->getMessage();            
+        }        
+
+        return $result;
+
     }
 
 }

@@ -6,8 +6,6 @@ require_once 'database/entidad.php';
 class ordersArticles extends entidadBase
 {
 
-	private $cart;
-
 	public $id;
 	public $orderId;
 	public $productId;
@@ -17,26 +15,26 @@ class ordersArticles extends entidadBase
 	{
 		try {
 			$table = "order_articles";
-			$this->cart = new cart();
 			parent::__construct($table);
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}
 	}
 
-	public function saveOrderArticles($orderID)
+	public function saveOrderArticles($orderID, $cartItems)
 	{
-		try {
-			$cartItems = $this->cart->contents();
+		try {			
 
             foreach ($cartItems as $item) {
-                $query = "INSERT INTO order_articles (order_id, product_id, quantity) VALUES (
+                $querys[] = "INSERT INTO order_articles (order_id, product_id, quantity) VALUES (
 					'" . $orderID . "', 
 					'" . $item['id'] . "', 
 					'" . $item['qty'] . "'
 				);";
-				$this->save($query);
+				
             }
+
+			return $querys;
 
 		} catch (Exception $e) {
 			die($e->getMessage());

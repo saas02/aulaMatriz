@@ -12,13 +12,15 @@ class PaymentController{
     private $clients;
     private $client;
     private $orders;
-    private $session;
+    public $session;
+    public $sessionData;
     
     public function __construct(){
         $this->cart = new cart();
         $this->producto = new product();
         $this->client = new client();
         $this->session = new Session();
+        $this->sessionData = $this->session->getSession();
     }
     
     public function Index(){

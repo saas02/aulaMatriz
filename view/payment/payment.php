@@ -34,9 +34,9 @@
 
         <div class="panel-body">
             <h1>Vista previa de la Orden</h1>
-            <?php
-            if (!empty($this->session->getSession()["error"])) {
-                echo "<div class='alert alert-danger'>".$this->session->getSession()["error"]."</div>";
+            <?php            
+            if (!empty($this->sessionData["errors"])) {
+                echo "<div class='alert alert-danger'>".$this->sessionData["errors"]."</div>";
             }
             ?>
             <table class="table">

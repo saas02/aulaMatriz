@@ -61,10 +61,9 @@ class product extends entidadBase
 	}
 
 	
-
 	public function saveProduct()
 	{
-		$query = "INSERT INTO products (name, description, price, created, modified, status)
+		$query[] = "INSERT INTO products (name, description, price, created, modified, status)
                 VALUES(
 					'" . $this->name . "',
 					'" . $this->description . "',
@@ -74,6 +73,6 @@ class product extends entidadBase
 					'1'
 				);";
 
-		$this->save($query);
+		return $this->save($query);
 	}
 }

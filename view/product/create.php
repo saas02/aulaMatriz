@@ -13,8 +13,8 @@
         <div class="panel-body">
             <h1>Crear Producto</h1>
             <?php
-                if (!empty($this->session->getSession()["error"])) {
-                    echo "<div class='alert alert-danger'>".$this->session->getSession()["error"]."</div>";
+                if (!empty($this->sessionData["errors"])) {
+                    echo "<div class='alert alert-danger'>".$this->sessionData["errors"]."</div>";
                 }
             ?>
             <form action="index.php?c=product&a=Create" method="POST">
