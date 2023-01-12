@@ -7,12 +7,14 @@ class productController
 {
 
     private $product;
+    private $cart;
     private $session;
     public $sessionData;
 
     public function __construct()
     {
         $this->product = new product();
+        $this->cart = new cart();
         $this->session = new Session();
         $this->sessionData = $this->session->getSession();
     }
