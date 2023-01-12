@@ -18,7 +18,9 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de datos: `cart`
 --
+CREATE DATABASE IF NOT EXISTS cart;
 
+USE cart;
 -- --------------------------------------------------------
 
 --
