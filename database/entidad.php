@@ -52,22 +52,25 @@ class entidadBase
         $result = [];
 
         try {
-
-            
+                        
             foreach ($querys as $query) {
                 mysqli_query($this->db, $query, MYSQLI_USE_RESULT);
-                $result[] = mysqli_insert_id($this->db);
-            }            
-            
-            mysqli_commit($this->db);
+                $id = mysqli_insert_id($this->db);
+                if($id > 0){
+                    $result[] = mysqli_insert_id($this->db);
+                    mysqli_commit($this->db);
+                }else{
+                    $_SESSION['errors'] = "Ocurrio un error!!!!";
+                    mysqli_rollback($this->db);
+                }
+                
+            }
 
-            
-        } catch (mysqli_sql_exception $exception) {
-            
+        } catch (mysqli_sql_exception $exception) {            
             mysqli_rollback($this->db);
             $_SESSION['errors'] = $exception->getMessage();            
-        }        
-
+        }
+                
         return $result;
 
     }

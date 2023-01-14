@@ -34,9 +34,20 @@
 
         <div class="panel-body">
             <h1>Vista previa de la Orden</h1>
-            <?php            
+            <?php
             if (!empty($this->sessionData["errors"])) {
-                echo "<div class='alert alert-danger'>".$this->sessionData["errors"]."</div>";
+                /** Examinacion de strings */
+                $count = substr_count(($this->sessionData["errors"]), 'error');
+                echo "<div class='alert alert-danger'>"
+                    /** Formato de strings */
+                    . sprintf(
+                        "Se presento %d error:  %s",
+                        $count,
+                        strtoupper(trim($this->sessionData["errors"]))
+                    ) .
+                    /** trim extraccion strings quita espacios*/
+                    /** Modificador de caracteres */
+                    "</div>";
             }
             ?>
             <table class="table">

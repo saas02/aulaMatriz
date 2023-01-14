@@ -6,7 +6,7 @@ class Database
 
         $server="localhost"; 
         $user="root"; 
-        $pass="root"; 
+        $pass=""; 
         $db="cart"; 
         
         // connect to mysql 
