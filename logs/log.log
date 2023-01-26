@@ -1,0 +1,28 @@
+2023-01-26 03:43:22 [ip] ::1 [text] Array
+(
+    [1679091c5a880faf6fb5e6087eb1b2dc] => Array
+        (
+            [id] => 6
+            [name] => producto 
+            [price] => 1
+            [qty] => 3
+            [rowid] => 1679091c5a880faf6fb5e6087eb1b2dc
+            [subtotal] => 3
+        )
+
+    [e4da3b7fbbce2345d7772b0674a318d5] => Array
+        (
+            [id] => 5
+            [name] => producto 
+            [price] => 1
+            [qty] => 1
+            [rowid] => e4da3b7fbbce2345d7772b0674a318d5
+            [subtotal] => 1
+        )
+
+)
+
+2023-01-26 03:43:22 [ip] ::1 [text] Array
+(
+)
+
